@@ -39,9 +39,9 @@ app.get('/delete', (req, res) => {
     res.render("delete");
 })
 app.post("/", (req, res) => {
-
+    let titlev1=req.body.titlee.replace(/\s+/g,' ').trim();
     const maindata = new blog({
-        title: _.capitalize(req.body.titlee.trim()),
+        title: _.capitalize(titlev1),
         blogparagraph: req.body.blogg,
     });
     blog.insertMany(maindata, function (err) {
@@ -49,6 +49,7 @@ app.post("/", (req, res) => {
             console.log(err);
         }
         else {
+            
             maindata.save();
             res.redirect("/");
         }
@@ -58,7 +59,7 @@ app.post("/", (req, res) => {
 })
 
 app.post("/delete", (req, res) => {
-    const deletepost = _.capitalize(req.body.titlee.trim());
+    const deletepost = _.capitalize(req.body.titlee.replace(/\s+/g,' ').trim());
     blog.findOneAndRemove({ title: deletepost },(err)=>{
         if(err){
             console.log(err);
