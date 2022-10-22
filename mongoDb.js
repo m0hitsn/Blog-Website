@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-mongoose.connect("mongodb+srv://redak:<password>@cluster0.awcv0mb.mongodb.net/BlogDB");
+mongoose.connect("mongodb+srv://redak:redak123@cluster0.awcv0mb.mongodb.net/BlogDB");
 
 
 const blogschema= new mongoose.Schema({
