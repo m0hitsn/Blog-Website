@@ -41,7 +41,7 @@ app.get('/delete', (req, res) => {
 app.post("/", (req, res) => {
 
     const maindata = new blog({
-        title: _.capitalize(req.body.titlee),
+        title: _.capitalize(req.body.titlee.trim()),
         blogparagraph: req.body.blogg,
     });
     blog.insertMany(maindata, function (err) {
@@ -58,7 +58,7 @@ app.post("/", (req, res) => {
 })
 
 app.post("/delete", (req, res) => {
-    const deletepost = _.capitalize(req.body.titlee);
+    const deletepost = _.capitalize(req.body.titlee.trim());
     blog.findOneAndRemove({ title: deletepost },(err)=>{
         if(err){
             console.log(err);
