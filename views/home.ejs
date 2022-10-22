@@ -1,0 +1,24 @@
+<%- include('partials/header') %>
+    <h1>Blog Website</h1>
+    <p>Welcome ! Here you can Blog your daily activity</p>
+    <div class="content">
+
+        <div>
+            <% Post.forEach(function(posts){%>
+                <h2>
+                    <%=posts.title%>
+                </h2>
+                <p>
+                    <%=posts.blogparagraph.substr(0,100)%>
+                    <a href="post/<%=posts.title%>">...Read more</a>
+                </p>
+                <%})%>
+
+        </div>
+
+    </div>
+
+
+
+
+    <%-include("partials/footer.ejs")-%>
