@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
 
 })
 app.get('/post/:titlevalue', (req, res) => {
-    let titlevl = _.capitalize(req.params.titlevalue);
+    let titlevl = _.capitalize(req.params.titlevalue.replace(/\s+/g,' ').trim());
     blog.findOne({ title: titlevl }, (err, data) => {
         res.render("post", {
             Title: data.title,
